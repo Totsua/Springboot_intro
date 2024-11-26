@@ -1,6 +1,6 @@
 package com.northcoders.demospringbootapp.dao;
 
-import com.northcoders.demospringbootapp.model.Results;
+import com.northcoders.demospringbootapp.model.ResultsMeteo;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -9,20 +9,19 @@ public class CityInformationDAO {
 private static String urlBuild = "https://geocoding-api.open-meteo.com/v1/search?name=";
 
 
-public static Results cityLongitudeAndLatitude(String city){
+public static ResultsMeteo cityLongitudeAndLatitude(String city){
     String url = urlBuild + city + "&count=1&language=en&format=json";
     return webClientConnector(url);
 }
 
-    private static Results webClientConnector(String url){
+    private static ResultsMeteo webClientConnector(String url){
         WebClient client = WebClient.create(url);
-        System.out.println(url);
-        Results responseBody;
+        ResultsMeteo responseBody;
 
         try{
             responseBody = client.get()
                     .retrieve()
-                    .bodyToMono(Results.class)
+                    .bodyToMono(ResultsMeteo.class)
                     .block();
             return responseBody;
         }catch (WebClientResponseException e){

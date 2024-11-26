@@ -2,7 +2,7 @@ package com.northcoders.demospringbootapp.controller;
 
 import com.northcoders.demospringbootapp.dao.CityInformationDAO;
 import com.northcoders.demospringbootapp.model.Person;
-import com.northcoders.demospringbootapp.model.Results;
+import com.northcoders.demospringbootapp.model.ResultsMeteo;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,7 +23,7 @@ public class DemoController {
     }
 
     @GetMapping("/citydetails")
-    public Results getCityDetails(@RequestParam String name){
+    public ResultsMeteo getCityDetails(@RequestParam String name){
         return CityInformationDAO.cityLongitudeAndLatitude(name);
     }
 }
