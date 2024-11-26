@@ -1,8 +1,10 @@
 package com.northcoders.demospringbootapp.controller;
 
 import com.northcoders.demospringbootapp.dao.CityInformationDAO;
+import com.northcoders.demospringbootapp.dao.SunriseSunsetDAO;
 import com.northcoders.demospringbootapp.model.Person;
 import com.northcoders.demospringbootapp.model.ResultsMeteo;
+import com.northcoders.demospringbootapp.model.ResultsSunriseSunset;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,5 +27,10 @@ public class DemoController {
     @GetMapping("/citydetails")
     public ResultsMeteo getCityDetails(@RequestParam String name){
         return CityInformationDAO.cityLongitudeAndLatitude(name);
+    }
+
+    @GetMapping("/sundetails")
+    public ResultsSunriseSunset getSunriseSunsetTimes(@RequestParam String latitude, @RequestParam String longitude){
+        return SunriseSunsetDAO.getSunriseSunsetTime(latitude,longitude);
     }
 }
