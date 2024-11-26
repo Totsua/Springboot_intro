@@ -1,5 +1,6 @@
 package com.northcoders.demospringbootapp.controller;
 
+import com.northcoders.demospringbootapp.model.Person;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,5 +13,11 @@ public class DemoController {
         return "Hello there!";
     }
 
+    Person bob = new Person("Bob Belcher",46,"bob@aol.com",
+            "USA","Burgers");
 
+    @GetMapping("/person")
+    public  Person sendBob(){
+        return bob;
+    }
 }
